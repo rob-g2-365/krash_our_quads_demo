@@ -21,6 +21,7 @@ body {
   margin: auto;
   overflow: hidden;
   padding: 0 3rem;
+  overflow-y:auto; 
 }
 
 .showcase {
@@ -88,17 +89,17 @@ body {
 table {
   border: 2px solid black;
   border-collapse: collapse;
-  padding: 10px;
+  padding: 5px;
 }
 
 th  {
   border: 2px solid black;
   border-collapse: collapse;
-  padding: 10px;
+  padding: 5px;
   background-color:darkgray;
 }
 td {
   border: 2px solid black;
   border-collapse: collapse;
-  padding: 10px;
+  padding: 5px;
 }
