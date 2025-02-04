@@ -35,10 +35,21 @@ let gLoggedIn = false;
 
 function handlerHome(event) {
   clearMenu();
+  showHomeInformation();
+}
+
+export function showHomeInformation() {
   const mainspaceElement = document.querySelector(".js-container");
   mainspaceElement.innerHTML = `
   <h1>Welcome</h1>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas maiores sint impedit delectus quam molestiae explicabo cum facere ratione veritatis.</p>
+  <p>This app allows users to share VTX frequencies. Perform the following steps:</p> 
+  <ol>
+    <li class="left"><b>Log In</b> using a Google account.</li>
+    <li class="left"><b>Enter VTX frequency</b> that you are using.</li>
+    <li class="left">When you arrive at the Krash Our Quads Event,  <b>Check In</b>.</li>
+    <li class="left">Before you fly, check the <b>Allocated Frequencies</b> and coordinate with anyone on your channel.</li>
+    <li class="left">When you leave the Krash Our Quads event, <b>Check Out</b>.</li>
+  </ol>
   <a href="#" class="btn">Read More</a>
   `;
 }

@@ -103,3 +103,7 @@ td {
   border-collapse: collapse;
   padding: 5px;
 }
+
+.left {
+  text-align: left;
+}

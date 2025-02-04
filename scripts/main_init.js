@@ -1,10 +1,9 @@
 
-import { intializeEventListeners, setLoginState} from './main_menu_handler.js';
+import { intializeEventListeners, setLoginState, showHomeInformation} from './main_menu_handler.js';
 // import { firebaseInit } from './firebase_init.js';
 
 // firebaseInit();
+showHomeInformation();
 intializeEventListeners();
 setLoginState(false);
-// initializeHamburgerEventListener();
-
 
