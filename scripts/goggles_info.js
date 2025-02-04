@@ -1,23 +1,34 @@
 const GOGGLES_STORAGE_ITEM = "goggles-info";
-import * as constants from './constants.js'
 
 export class GogglesInfo {
-  #platformType = null;
+  #platform = null;
   #label = null;
   #channel =null;
   #aChannel = null;
   #freq = null;
 
-  setPlatform(platformType) {
-    this.#platformType = platformType;
+  setPlatform(platform) {
+    this.#platform = platform;
   }
 
   getPlatform(){
-    return this.#platformType;
+    return this.#platform;
+  }
+
+  getLabel() {
+    return this.#label;
+  }
+
+  getChannel(){
+    return this.#channel;
+  }
+
+  getAChannel() {
+    return this.#aChannel;
   }
 
   isInitialized() {
-    return ((this.#platformType!==null) && (this.#freq !== null));
+    return ((this.#platform!==null) && (this.#freq !== null));
   }
 
   test() {
@@ -33,7 +44,7 @@ export class GogglesInfo {
 
   toJSON () {
     return {
-      platformType: this.#platformType,
+      platformType: this.#platform,
       label:this.#label,
       channel: this.#channel,
       aChannel:this.#aChannel,
@@ -54,31 +65,4 @@ export class GogglesInfo {
     gogglesInfo.setPlatform(goggleRecord.platformType);
     gogglesInfo.setFreqInfo(goggleRecord);
   }
-}
-
-export function getGoggleTestData() {
-  const FIRST_NAMES = ['Ben', 'Ethen', 'Joel', 'Zane', 'Grant', 'Jayden', 'Arthur', 'Max', 'Mary' ];
-  let testData = [];
-  for(let i = 0; i< FIRST_NAMES.length; i++) {
-    const name = FIRST_NAMES[i];
-    testData.push({name: name, goggleInfo: createRandomGogglesRecord(name)});
-  }
-  return testData;
-}
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * max);
-}
-
-
-function createRandomGogglesRecord(){
-  const goggleLength = constants.GOGGLES_RECORDS.length;
-  const goggleRecord = constants.GOGGLES_RECORDS[getRandomInt(goggleLength)];
-  const numFreqRecords = goggleRecord.freqMap.length;
-  const freqRecord = goggleRecord.freqMap[getRandomInt(numFreqRecords)];
-  const info = new GogglesInfo();
-  info.setPlatform(goggleRecord.type);
-  info.setFreqInfo(freqRecord)
-  return info;
-}
-
+};

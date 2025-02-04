@@ -74,7 +74,7 @@ export const GOGGLE_TYPES = [ANALOG, DJI, HDZERO, WALKSNAIL];
 export const GOGGLES_RECORDS = [ANALOG_RECORD, DJI_RECORD, HDZERO_RECORD, WALKSNAIL_RECORD];
 
 
-export function goggleToGoggleRecord( gogglesType) {
+export function goggleToGoggleRecord(gogglesType) {
   return GOGGLES_RECORDS.find((g) => g.type === gogglesType)
 }
 
