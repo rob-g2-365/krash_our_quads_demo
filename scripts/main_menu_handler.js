@@ -1,4 +1,9 @@
 // import { googleLogin, logout } from './firebase_init.js';
+// import { googleLogin, logout } from './firebase_init.js';
+import {showGogglesTypeQuestion, showFreqQuestion} from './enter_freq.js';
+import * as constant from './constants.js';
+
+
 
 const menuHome = 'js-menu-home';
 const menuLogin = 'js-menu-login';
@@ -23,7 +28,9 @@ const arrayMenuLoggedIn = [
   menuEnterFreq,
   menuArriveLeave,
   menuAllocateFreq
-]
+];
+
+let gLoggedIn = false;
 
 /* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
 /*
@@ -39,22 +46,34 @@ const arrayMenuLoggedIn = [
 
 function handlerHome(event) {
   clearMenu();
-  // googleLogin(updateLoginState);
+  const mainspaceElement = document.querySelector(".js-container");
+  mainspaceElement.innerHTML = `
+  <h1>Welcome</h1>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas maiores sint impedit delectus quam molestiae explicabo cum facere ratione veritatis.</p>
+  <a href="#" class="btn">Read More</a>
+  `;
 }
 
 
 function handlerLogin(event) {
   clearMenu();
   // googleLogin(updateLoginState);
+  gLoggedIn = true;
+  updateLoginState()
 }
 
 function handlerLogout(event) {
   clearMenu();
   // logout(updateLoginState);
+  gLoggedIn = false;
+  updateLoginState()
 }
 
 function handlerEnterFreq(event) {
-  alert("enter freq.");
+  // alert("enter freq.");
+  clearMenu();
+  showGogglesTypeQuestion();
+  // showFreqQuestion(constant.ANALOG)
 }
 
 function handlerArriveLeave(event) {
@@ -62,7 +81,9 @@ function handlerArriveLeave(event) {
 }
 
 function handlerAllocateFreq() {
-  alert("Show Allocated Frequency");
+  // alert("Show Allocated Frequency");
+  clearMenu();
+  showGogglesTypeQuestion();
 }
 function handlerAbout() {
   const mainspaceElement = document.querySelector(".js-container");
@@ -97,12 +118,14 @@ function updateLoginState() {
 }
 */
 
+function updateLoginState() {
+  setLoginState(gLoggedIn);
+}
+
 export function intializeEventListeners(){
   menuHandlers.forEach((item) => {
     const element = document.querySelector('.' + item.c);
-    console.log(item.c);
     element.addEventListener('click',item.f);
-    console.log(element);
   });
 }
 
