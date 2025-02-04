@@ -1,6 +1,7 @@
 // import { googleLogin, logout } from './firebase_init.js';
 // import { googleLogin, logout } from './firebase_init.js';
 import {showGogglesTypeQuestion, showFreqQuestion} from './enter_freq.js';
+import {showFreqTable} from './freq_table.js'
 import * as constant from './constants.js';
 
 
@@ -31,18 +32,6 @@ const arrayMenuLoggedIn = [
 ];
 
 let gLoggedIn = false;
-
-/* Toggle between showing and hiding the navigation menu links when the user clicks on the hamburger menu / bar icon */
-/*
- function hamburgerEventListener(event) {
-  const x = document.getElementById("myLinks");
-  if (x.style.display === "block") {
-    x.style.display = "none";
-  } else {
-    x.style.display = "block";
-  }
-}
-  */
 
 function handlerHome(event) {
   clearMenu();
@@ -83,7 +72,7 @@ function handlerArriveLeave(event) {
 function handlerAllocateFreq() {
   // alert("Show Allocated Frequency");
   clearMenu();
-  showGogglesTypeQuestion();
+  showFreqTable();
 }
 function handlerAbout() {
   const mainspaceElement = document.querySelector(".js-container");

@@ -4,7 +4,7 @@ export const HDZERO = 'hdzero';
 export const WALKSNAIL = 'walksnail';
 
 
-export const ANALOG_INFO = {
+export const ANALOG_RECORD = {
   type: ANALOG,
   name: 'Analog',
   question: 'Choose the R band analog channel?',
@@ -20,7 +20,7 @@ export const ANALOG_INFO = {
   ]
 };
 
-export const DJI_INFO = {
+export const DJI_RECORD = {
   type: DJI,
   name: 'DJI O3',
   question: 'Choose the DJI channel?',
@@ -35,7 +35,7 @@ export const DJI_INFO = {
   ]
 };
 
-export const HDZERO_INFO = {
+export const HDZERO_RECORD = {
   type: HDZERO,
   name: 'HDZero',
   question: 'Choose the HDZero Channel?',
@@ -53,7 +53,7 @@ export const HDZERO_INFO = {
   ]
 };
 
-const WALKSNAIL_INFO = {
+const WALKSNAIL_RECORD = {
   type: WALKSNAIL,
   question: 'Choose the Walksnail Channel?',
   name: 'WalkSnail',
@@ -71,11 +71,11 @@ const WALKSNAIL_INFO = {
 };
 
 export const GOGGLE_TYPES = [ANALOG, DJI, HDZERO, WALKSNAIL];
-export const GOGGLES_INFO = [ANALOG_INFO, DJI_INFO, HDZERO_INFO, WALKSNAIL_INFO];
+export const GOGGLES_RECORDS = [ANALOG_RECORD, DJI_RECORD, HDZERO_RECORD, WALKSNAIL_RECORD];
 
 
 export function goggleToGoggleRecord( gogglesType) {
-  return GOGGLES_INFO.find((g) => g.type === gogglesType)
+  return GOGGLES_RECORDS.find((g) => g.type === gogglesType)
 }
 
 export function getFreqSelection(gogglesInfo, label) {

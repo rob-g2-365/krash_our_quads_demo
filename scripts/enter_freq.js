@@ -88,7 +88,7 @@ function buttonFreqEventListener(event) {
   const goggleRecord = constant.goggleToGoggleRecord(goggleType);
   const freqRecord = constant.getFreqSelection(goggleRecord, label);
 
-  const gGogglesInfo = new GogglesInfo();
+  gGogglesInfo = new GogglesInfo();
   gGogglesInfo.setPlatform(goggleType);
   gGogglesInfo.setFreqInfo(freqRecord);
 }
