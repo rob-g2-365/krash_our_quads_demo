@@ -7,6 +7,7 @@ export class GogglesInfo {
   #aChannel = null;
   #freq = null;
 
+
   setPlatform(platform) {
     this.#platform = platform;
   }

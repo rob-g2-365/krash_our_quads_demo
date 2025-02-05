@@ -1,7 +1,9 @@
 // import { googleLogin, logout } from './firebase_init.js';
 // import { googleLogin, logout } from './firebase_init.js';
-import {showGogglesTypeQuestion, showFreqQuestion} from './enter_freq.js';
+import {showGogglesTypeQuestion} from './enter_freq.js';
 import {showFreqTable} from './freq_table.js'
+import {loggedIn, UserInfo, setGlobalUserInfo, globalUserLoggedInAndConfigured} from './user_info.js'
+import { showCheckInOutQuestion } from './check_in_out.js';
 import * as constant from './constants.js';
 
 
@@ -24,14 +26,6 @@ const menuHandlers = [
   {f: handlerAbout, c:menuAbout}
 ];
 
-const arrayMenuLoggedIn = [
-  menuLogout,
-  menuEnterFreq,
-  menuArriveLeave,
-  menuAllocateFreq
-];
-
-let gLoggedIn = false;
 
 function handlerHome(event) {
   clearMenu();
@@ -57,16 +51,19 @@ export function showHomeInformation() {
 
 function handlerLogin(event) {
   clearMenu();
-  // googleLogin(updateLoginState);
-  gLoggedIn = true;
-  updateLoginState()
+  // googleLogin(updateMenuState);
+  const userInfo = new UserInfo();
+  userInfo.setName('JoeBob');
+  setGlobalUserInfo(userInfo);
+  updateMenuState();
 }
 
 function handlerLogout(event) {
   clearMenu();
-  // logout(updateLoginState);
-  gLoggedIn = false;
-  updateLoginState()
+  // logout(updateMenuState);
+  setGlobalUserInfo(null);
+  updateMenuState();
+  showHomeInformation();
 }
 
 function handlerEnterFreq(event) {
@@ -77,7 +74,8 @@ function handlerEnterFreq(event) {
 }
 
 function handlerArriveLeave(event) {
-  alert("Arrive Leave");
+  clearMenu();
+  showCheckInOutQuestion();
 }
 
 function handlerAllocateFreq() {
@@ -108,7 +106,7 @@ function clearMenu() {
 //}
 
 /*
-function updateLoginState() {
+function updateMenuState() {
   const user = firebase.auth().currentUser;
   console.log(user);
   if(user) {
@@ -118,20 +116,21 @@ function updateLoginState() {
 }
 */
 
-function updateLoginState() {
-  setLoginState(gLoggedIn);
+export function updateMenuState() {
+  setMenuEnable(menuLogin, !loggedIn());
+  setMenuEnable(menuArriveLeave, globalUserLoggedInAndConfigured());
+  setMenuEnable(menuLogout, loggedIn());
+  setMenuEnable(menuEnterFreq, loggedIn());
+  setMenuEnable(menuAllocateFreq, loggedIn());
+}
+
+function setMenuEnable(className, enable) {
+  document.querySelector('.' + className).style.display = enable?'block':'none';
 }
 
 export function intializeEventListeners(){
   menuHandlers.forEach((item) => {
     const element = document.querySelector('.' + item.c);
     element.addEventListener('click',item.f);
-  });
-}
-
-export function setLoginState(loggedIn) {
-  document.querySelector('.' + menuLogin).style.display = !loggedIn?'block':'none';
-  arrayMenuLoggedIn.forEach((menuClass) => {
-    document.querySelector('.' + menuClass).style.display = loggedIn?'block':'none';
   });
 }

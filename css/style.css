@@ -107,3 +107,9 @@ td {
 .left {
   text-align: left;
 }
+
+.left-radio-div {
+  align-items: left;
+  justify-content: left;
+  text-align: left;
+}

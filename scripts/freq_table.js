@@ -30,7 +30,6 @@ function createRows(arrayUsersInfo) {
       return userInfo.getAChannel()==aChannel; 
     });
 
-
     // Sort the names.
     arrayUserInfoForChannel.sort((u1, u2) => { return u1.getName() > u2.getName()});
     html += createUserRow(arrayUserInfoForChannel, aChannel);

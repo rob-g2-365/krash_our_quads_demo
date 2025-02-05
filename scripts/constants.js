@@ -3,7 +3,6 @@ export const DJI = 'dji';
 export const HDZERO = 'hdzero';
 export const WALKSNAIL = 'walksnail';
 
-
 export const ANALOG_RECORD = {
   type: ANALOG,
   name: 'Analog',
@@ -26,7 +25,7 @@ export const DJI_RECORD = {
   question: 'Choose the DJI channel?',
   notes: 'Please use 25Mbs data throughput. ' + 
   'Channel 1 and Channel 2 are removed because they bleed into other analog channels.' +
-  'Channel 5 is the public/configuration channel for DJI and Walksnail so it is removed also',
+  'Channel 5 is the public/configuration channel for DJI and Walksnail so it is removed also.',
   freqMap: [
     {label: 'dji-ch3', channel: 3, achannel: 4, name: 'Channel 3', freq: 5.768 },
     {label: 'dji-ch4', channel: 4, achannel: 5, name: 'Channel 4', freq: 5.804 },
@@ -72,7 +71,6 @@ const WALKSNAIL_RECORD = {
 
 export const GOGGLE_TYPES = [ANALOG, DJI, HDZERO, WALKSNAIL];
 export const GOGGLES_RECORDS = [ANALOG_RECORD, DJI_RECORD, HDZERO_RECORD, WALKSNAIL_RECORD];
-
 
 export function goggleToGoggleRecord(gogglesType) {
   return GOGGLES_RECORDS.find((g) => g.type === gogglesType)
